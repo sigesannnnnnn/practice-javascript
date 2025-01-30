@@ -58,7 +58,30 @@ function startNumberGuessgane(){
     let input =document.createElement("input");
     input.type="number";
     input.placeholder="好きな数字を入力してください(1~100)"
+
     gameContainer.appendChild(input);
     gameContainer.appendChild(messaga);
+
+    let button =document.createElement("button");
+    button.textContent="確認"
+
+    button.addEventListener("click",function(){
+        const val =parseInt(input.value);
+        if (randomNumber == val){
+            messaga.textContent="正解"
+        }else if(randomNumber<val){
+            messaga.textContent="大きい"
+        }else{
+            messaga.textContent="小さい"
+        }
+
+        count++;
+        countDisplay.textContent=`試行錯誤: ${count}`;
+    })
+gameContainer.appendChild(button);
+let count=0;
+const countDisplay=document.createElement("p");
+countDisplay.textContent=`試行錯誤: ${count}`;
+gameContainer.appendChild(countDisplay);
 }
 startNumberGuessgane();
